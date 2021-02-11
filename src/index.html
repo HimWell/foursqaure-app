@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html ng-app="FoursquareApp">
+
+<head>
+    <title>Foursquare Location Search</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="shortcut icon" href="images/foursquare-logo.png">
+
+    <script type="text/javascript" src="js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/controllers/MainController.js"></script>
+    <script type="text/javascript" src="js/services/FoursquareSearchService.js"></script>
+    <script type="text/javascript" src="js/controllers/VenueDetailsController.js"></script>
+    <script type="text/javascript" src="js/services/FoursquarePhotosService.js"></script>
+
+</head>
+
+<body class="main-cont" ng-controller="MainController as mainCtrl">
+
+    <header class="header-cont">
+
+        <form>
+            <div class="pull-left input-cont">
+                <input type="text" class="form-control" ng-model="mainCtrl.place" placeholder="Search Location" />
+            </div>
+            <div class="pull-left input-cont">
+                <input type="text" class="form-control" ng-model="mainCtrl.category" placeholder="Search Category e.g restuarants" />
+            </div>
+            <div class="pull-left exp-btn">
+                <button ng-click="mainCtrl.doExplore()" class="btn btn-success">Search</button>
+            </div>
+        </form>
+
+    </header>
+
+    <div>
+
+        <div class="nav-cont">
+            <ul class="nav nav-stacked list-cont">
+                <li ng-repeat="item in mainCtrl.items" ng-click="mainCtrl.setSelectedItem(item, $index)" ng-class="{active: $index===mainCtrl.selectedIndex}" id="favourites">
+                    <div class="card">
+                        <p class="card-name"> Location Name: {{item.venue.name}}</p>
+                        <div class="address-text">
+                            <p> Location Address: {{item.venue.location.address}}</p>
+                            <p style="padding-bottom: 5px;"> Location Category: {{mainCtrl.getCategory(item.venue)}}</p>
+                            <p><button class="btn btn-warning" onclick="saveToFavourites()">Add To Favourites</button></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <section class="section-main-cont" ng-show="showPhotos">
+            <venue-details></venue-details>
+        </section>
+
+    </div>
+
+    <!-- extra save to favourites functionality -->
+    <script>
+        function saveToFavourites() {
+            var newData = document.getElementsByTagName('li');
+
+            if (localStorage.getItem('favorites') == null) {
+                localStorage.setItem('favorites', '[]');
+            }
+            var oldData = JSON.parse(localStorage.getItem('favorites'));
+            oldData.push(newData);
+            localStorage.setItem('favorites', JSON.stringify(oldData));
+        }
+    </script>
+
+</body>
+
+</html>

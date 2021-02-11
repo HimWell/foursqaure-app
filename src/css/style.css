@@ -1,0 +1,96 @@
+section {
+    position: relative;
+}
+
+.main-cont {
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin-top: 90px;
+}
+
+.header-cont {
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    background-color: #ca5679;
+    padding: 2px;
+    z-index: 1;
+    position: fixed;
+}
+
+.input-cont {
+    width: 280px;
+    padding: 0px 10px;
+}
+
+.exp-btn {
+    width: 280px;
+    padding: 0px 10px;
+}
+
+.card {
+    padding: 2px 3px;
+    height: 132px;
+    border-radius: 4px;
+}
+
+.card>p,
+div p {
+    margin: 0px;
+}
+
+.card-name {
+    width: 260px;
+}
+
+.address-text {
+    width: 260px;
+}
+
+.list-cont>li {
+    float: left;
+    border-radius: 4px;
+    background-color: #ca5679;
+    cursor: pointer;
+}
+
+.list-cont>li.active>div,
+.list-cont>li.active>div:focus {
+    background-color: #3c9944;
+    cursor: pointer;
+}
+
+.list-cont>li.active>div>p.card-name {
+    color: #FFF;
+}
+
+.list-cont>li.active>div>div.address-text {
+    color: #FFF;
+}
+
+.nav-cont {
+    float: left;
+    min-width: 350px;
+}
+
+.section-main-cont {
+    overflow: hidden;
+}
+
+.photos-cont {
+    padding: 0px;
+}
+
+.photo-cont {
+    display: inline;
+}
+
+.image-view {
+    border-radius: 10px;
+    height: 300px;
+    width: 650px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-left: 350px;
+}
